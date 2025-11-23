@@ -1,3 +1,4 @@
+typescript
 'use client';
 import { Search, Printer, Presentation } from 'lucide-react';
 
