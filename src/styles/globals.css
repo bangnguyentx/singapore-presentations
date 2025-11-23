@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --singapore-red: #EF3340;
+  --singapore-gold: #F6C85F;
+  --singapore-teal: #14B8A6;
+  --singapore-charcoal: #0F1724;
+  --slide-width: 100vw;
+  --slide-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: var(--singapore-charcoal);
+  color: #fff;
+}
+
+/* High contrast mode styles */
+body.high-contrast {
+  --singapore-red: #FF0000;
+  --singapore-gold: #FFCC00;
+  --singapore-teal: #00FFCC;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+body.high-contrast * {
+  border-color: #FFFFFF !important;
+}
+
+body.high-contrast .vietnamese-overlay {
+  opacity: 1 !important;
+  color: #CCCCCC !important;
+}
+
+/* Large text mode */
+body.large-text {
+  font-size: 120%;
+}
+
+body.large-text .slide-title {
+  font-size: 4.2rem;
+}
+
+body.large-text .slide-subtitle {
+  font-size: 1.8rem;
+}
+
+/* Vietnamese overlay default styles */
+.vietnamese-overlay {
+  opacity: 0.6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin-top: 0.25rem;
+  transition: opacity 0.3s ease;
+}
+
+/* Slide container */
+.slide-container {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: 100vh;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Keyboard focus styles */
+*:focus-visible {
+  outline: 3px solid var(--singapore-gold);
+  outline-offset: 2px;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--singapore-gold);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--singapore-red);
+  color: white;
+  padding: 1rem 2rem;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--singapore-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C72834;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--singapore-red);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--singapore-red);
+  color: white;
+}
+
+/* Leaflet map fixes */
+.leaflet-container {
+  font-family: 'Inter', sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: rgba(15, 23, 36, 0.95);
+  color: white;
+  border-radius: 8px;
+}
+
+.leaflet-popup-tip {
+  background-color: rgba(15, 23, 36, 0.95);
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Slide transition animations */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-enter-right {
+  animation: slideInFromRight 0.6s ease-out;
+}
+
+.slide-enter-left {
+  animation: slideInFromLeft 0.6s ease-out;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 2rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .vietnamese-overlay {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .slide-title {
+    font-size: 1.5rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Presenter mode styles */
+.presenter-mode .slide-notes {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 36, 0.95);
+  padding: 1.5rem;
+  max-height: 30vh;
+  overflow-y: auto;
+  border-top: 2px solid var(--singapore-red);
+  z-index: 50;
+}
+
+.presenter-mode .presenter-timer {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(15, 23, 36, 0.95);
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  z-index: 50;
+}
+
+/* Accessibility: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print optimizations - basic, full version in print.css */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
