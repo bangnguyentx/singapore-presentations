@@ -1,0 +1,31 @@
+json
+{
+  "name": "Singapore Presentation - Interactive Educational Website",
+  "short_name": "Singapore",
+  "description": "Comprehensive interactive presentation about Singapore with bilingual content",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1724",
+  "theme_color": "#EF3340",
+  "orientation": "landscape-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/singapore-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["education", "presentation", "geography"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
