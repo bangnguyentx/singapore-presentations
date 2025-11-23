@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-red: #EF3340;
+  --primary-white: #FFFFFF;
+  --primary-dark: #0F1724;
+  --primary-gold: #F6C85F;
+  --primary-teal: #2DD4BF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-inter), sans-serif;
+}
+
+body {
+  color: var(--primary-dark);
+  background: var(--primary-white);
+}
+
+.vietnamese-translation {
+  @apply text-sm opacity-60 tracking-tight mt-1;
+}
+
+.slide-container {
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex: 0 0 100vw;
+}
+
+/* High contrast mode */
+.high-contrast {
+  --primary-dark: #000000;
+  --primary-white: #FFFFFF;
+  filter: contrast(1.5);
+}
+
+.high-contrast .vietnamese-translation {
+  opacity: 0.8;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+  
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .slide {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    height: 100vh !important;
+  }
+}
